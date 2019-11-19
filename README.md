@@ -9,24 +9,7 @@ Formulas take the form of nested objects or strings where every string represent
 A simple example of a formula:
 
 ```javascript
-{
-  and: [
-    'SMALL',
-    {
-      or: [
-        'BLUE',
-        'GREEN'
-      ]
-     },
-     {
-      and: [
-        {not: 'GREEN'},
-        'ROUND'
-       ]
-      },
-      {not: 'LARGE'}
-    ]
-}
+{and: ['SMALL', {or: ['BLUE', 'GREEN']}, {and: [{not: 'GREEN'}, 'ROUND']}, {not: 'LARGE'}]}
  ```
  
  And its solution:
