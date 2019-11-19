@@ -12,16 +12,20 @@ A simple example of a formula:
 {
   and: [
     'SMALL',
-    {or: [
-      'BLUE',
-      'GREEN'
-    ]},
-    {and: [
-    {not: 'GREEN'},
-    'ROUND'
-    ]},
-    {not: 'LARGE'}
-  ]
+    {
+      or: [
+        'BLUE',
+        'GREEN'
+      ]
+     },
+     {
+      and: [
+        {not: 'GREEN'},
+        'ROUND'
+       ]
+      },
+      {not: 'LARGE'}
+    ]
 }
  ```
  
