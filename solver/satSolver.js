@@ -58,6 +58,6 @@ module.exports = {
         solutions.push(assignment)
       }
     }
-    return solutions.length > 1 ? solutions : 'Formula has no solution'
+    return solutions.length >= 1 ? solutions : 'Formula has no solution'
   }
 }

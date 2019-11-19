@@ -1,4 +1,4 @@
-const satSolver = require("../satSolver")
+const satSolver = require("../solver/satSolver")
 const formulas = require("./formulas")
 
 
