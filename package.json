@@ -1,0 +1,19 @@
+{
+  "name": "sat-solver",
+  "version": "1.0.0",
+  "description": "sat solver",
+  "main": "test/test.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node test/test.js"
+  },
+  "keywords": [
+    "sat",
+    "satisfiability",
+    "boolean"
+  ],
+  "author": "Zachary  Olpin",
+  "license": "ISC"
+}
