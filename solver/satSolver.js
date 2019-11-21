@@ -35,7 +35,7 @@ module.exports = {
           for (let i = 0; i < colLength / 2; i++) {
             column.push(true)
           }
-          for (let i = 0; i<colLength / 2; i++) {
+          for (let i = 0; i < colLength / 2; i++) {
             column.push(false)
           }
         }
