@@ -3,5 +3,6 @@ const formulas = require("./formulas")
 
 
 formulas.formulas.map((f, i) => {
-  console.log(`Formula ${++i} solutions:`,satSolver.solve(f))
+  let solution = satSolver.solve(f)
+  console.log(`Formula ${i + 1} solutions:`, solution, solution.length)
 })

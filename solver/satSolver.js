@@ -4,8 +4,8 @@ module.exports = {
     const allVars = formula => {
       if (typeof formula === 'string') return [formula]
       if (formula.not) return allVars(formula.not)
-      if (formula.and) return Array.from(new Set(formula.and.map(v => allVars(v)).flat()))
-      if (formula.or) return Array.from(new Set(formula.or.map(v => allVars(v)).flat()))
+      if (formula.and) return Array.from(new Set(formula.and.map(v => allVars(v)).flat())).sort()
+      if (formula.or) return Array.from(new Set(formula.or.map(v => allVars(v)).flat())).sort()
     }
 
     const isTrue = (formula, assignments) => {
