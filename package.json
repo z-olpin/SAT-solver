@@ -2,6 +2,10 @@
   "name": "sat-solver",
   "version": "1.0.0",
   "description": "sat solver",
+  "repository": {
+    "url": "https://github.com/vxxce/SAT-solver.git",
+    "type": "public github"
+  },
   "main": "test/test.js",
   "directories": {
     "test": "test"
@@ -14,6 +18,7 @@
     "satisfiability",
     "boolean"
   ],
+  "private": false,
   "author": "Zachary  Olpin",
   "license": "ISC"
 }
