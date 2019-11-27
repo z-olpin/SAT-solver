@@ -1,13 +1,15 @@
 module.exports = {
   solve: function(formula) {
 
+    // Exhaustive traversal of formula, returning all its variables 
     const allVars = formula => {
-      if (typeof formula === 'string') return [formula]
-      if (formula.not) return allVars(formula.not)
-      if (formula.and) return Array.from(new Set(formula.and.map(v => allVars(v)).flat())).sort()
-      if (formula.or) return Array.from(new Set(formula.or.map(v => allVars(v)).flat())).sort()
+      if (typeof formula === 'string') return [formula] // variable
+      if (formula.not) return allVars(formula.not) // negated literal
+      if (formula.and) return Array.from(new Set(formula.and.map(v => allVars(v)).flat())).sort() // conjunction
+      if (formula.or) return Array.from(new Set(formula.or.map(v => allVars(v)).flat())).sort() // disjunction
     }
 
+    // Descend through clauses of formula tree and determine whether a set of assignments satisfies formula 
     const isTrue = (formula, assignments) => {
       if (typeof formula === 'string') return assignments[formula]
       if (formula.not) return !isTrue(formula.not, assignments)
@@ -15,43 +17,18 @@ module.exports = {
       if (formula.or) return formula.or.map(v => isTrue(v, assignments)).includes(true)
     }
 
-    // Returns array of all possible boolean assignments from array of variables
+    // Returns array of objects, collectively representing all possible assignments
     const possibleAssignments = vars => {
-
-      let numVars = vars.length 
-      let columns = []
-      
-      // Permutation table for variables A, B: 
-      //     A  B
-      //     ----
-      //     T  T
-      //     T  F
-      //     F  T
-      
-      // Build 2D array representing *columns* of a permutation table
-      for (let colLength = Math.pow(2, numVars); colLength > 1; colLength /= 2) {
-        let column = []
-        while (column.length < Math.pow(2, numVars)) {
-          for (let i = 0; i < colLength / 2; i++) {
-            column.push(true)
-          }
-          for (let i = 0; i < colLength / 2; i++) {
-            column.push(false)
-          }
-        }
-        columns.push(column)
-      }
-      
-      // Transpose columns into rows of permutation table
-      // and create an assignments object from each e.g. {A: false, B: true, C: false}
-      let assignments = []
-      for (let i = 0; i < Math.pow(2, numVars); i++) {
-        assignments.push(Object.fromEntries(columns.map(c => c[i]).map((v,i) => [vars[i], v])))
-      }
+      let numVars = vars.length
+      // Count in binary up to possibleStates ^ numVars
+      let assignments = [...Array(Math.pow(2, numVars)).keys()]
+        .map(i => (i >>> 0).toString(2).padStart(numVars, '0')) // Use bit shift to make binary string representation -> '010'
+        .map(s => s.split('').map(n => (n === '0') ? false : true)) // Convert binary string to array of bools -> [false, true, false]
+        .map(r => Object.fromEntries(r.map((v,i) => [vars[i], v]))) // -> {'var1': false, 'var2': true, 'var3': false}
       return assignments
     }
 
-    // Test all assignments and return valid solutions
+    // Try all assignments and return all valid solutions
     let solutions = []
     for (let assignment of possibleAssignments(allVars(formula))) {
       if (isTrue(formula, assignment)) {
