@@ -5,6 +5,7 @@ An exhaustive algorithm for determining Boolean Satisfiability of a given formul
 ## Formulas
 
 Formulas take the form of boolean objects (BOBs) representing the formula's constraints.
+
 BOB: { key (AND|OR|NOT): value (string|array) } 
 
 AND  ->  An array of strings or BOBs. It may be of any length.
@@ -15,7 +16,7 @@ NOT  ->  A string.
 
 ## Examples
 
-The formula `{OR: ["pretty old", {AND: ["strange", "very hairy"]}}` is a BOB representing (probably) somebody's idea of what constitutes an acceptable romantic partner. Suitor A, who is strange and hairy is acceptable. Suitor B, who is *very* hairy, but neither old nor strange, will not do. 
+The formula `{OR: ["pretty old", {AND: ["strange", "very hairy"]}}` is a BOB representing what constitutes the ideal romantic partner. Suitor A, who is strange and hairy is acceptable. Suitor B, who is *very* hairy, but neither old nor strange, will not do. 
 
 Examples of simple formulas:
 
