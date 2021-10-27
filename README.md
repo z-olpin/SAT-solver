@@ -21,7 +21,7 @@ interface Formula {
 };
 ```
 
-The solver takes a `Formula` as input. A formula may have any or all of the properies `AND`, `OR`, and `NOT`, which–with their values–represent clauses. `AND` is a conjunction, `OR` is a disjunction, and `NOT` is a negation. The `AND` and `OR` properties must have an array (of any length) as their value which may contain string literals or a `Formula`. `NOT` must have a string literal as its' value. Note that a `Formula` may contain arbitrarily deeply-nested formulas. Each string literal in a `Formula` represents a `Variable` whose Boolean value is implicitly `True`.
+The solver takes a `Formula` as input. A formula may have any or all of the properies `AND`, `OR`, and `NOT`, which–with their values–represent clauses. `AND` is a conjunction, `OR` is a disjunction, and `NOT` is a negation. The `AND` and `OR` properties must have an array (of any length) as their value which may contain string literals or a `Formula`. `NOT` must have a string literal or `Formula` as its' value. Note that a `Formula` may contain arbitrarily deeply-nested formulas. Each string literal in a `Formula` represents a `Variable` whose Boolean value is implicitly `True`.
 
 ### Example
 
