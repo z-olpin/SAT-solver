@@ -1,17 +1,14 @@
 {
   "name": "sat-solver",
   "version": "1.0.0",
-  "description": "sat solver",
+  "description": "Sat Solver",
   "repository": {
     "url": "https://github.com/vxxce/SAT-solver.git",
     "type": "public github"
   },
-  "main": "test/test.js",
-  "directories": {
-    "test": "test"
-  },
+  "main": "solver/satSolver.ts",
   "scripts": {
-    "start": "node test/test.js"
+    "start": "tsc && node out/satSolver.js"
   },
   "keywords": [
     "sat",
@@ -20,5 +17,6 @@
   ],
   "private": false,
   "author": "Zachary  Olpin",
-  "license": "ISC"
+  "license": "ISC",
+  "type": "module"
 }
