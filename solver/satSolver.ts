@@ -63,7 +63,7 @@ const possibleAssignments = (variables: Array<string>): Array<AssignmentSet> => 
         })
 }
 
-export const solve = (formula: Formula): Array<AssignmentSet> => {
+const solve = (formula: Formula): Array<AssignmentSet> => {
     const solutions = [];
     for (let assignment of possibleAssignments(allVars(formula))) {
         if (isTrue(formula, assignment)) {
